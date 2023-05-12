@@ -48,7 +48,7 @@ try {
       // Отправляем ответное сообщение другому пользователю
       foreach ($chats as $userChatId) {
          if ($userChatId !== $chatId && trim($userChatId) != '') {
-            $bot->sendMessage($userChatId, $firstName . ' ' . $lastName . ' написал(а): ' . $chatId . $text);
+            $bot->sendMessage($userChatId, $firstName . ' ' . $lastName . ' написал(а): ' . $chatId . ' ' . $text);
          }
       }
    }, function () {
