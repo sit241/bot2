@@ -1,2 +1,14 @@
+самому без докера
 php -S localhost:8000
 ngrok http 8000
+
+
+Помните, что после изменения Dockerfile, вам нужно пересобрать образ:
+docker build -t my-php-bot .
+docker run -d -p 8000:8000 --name my-running-bot my-php-bot
+
+
+
+Если вы уже запускали контейнер и просто хотите его перезапустить, вы можете использовать следующие команды:
+docker stop my-running-bot
+docker start my-running-bot

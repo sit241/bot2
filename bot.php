@@ -1,8 +1,9 @@
 <?php
-//"https://api.telegram.org/bot5974205574:AAGObwmuI1cS0RLadnYysRsOi1sGxz9pbuQ/setWebhook?url=https://573a-219-100-37-243.ngrok-free.app/bot.php "
+//"https://api.telegram.org/bot5974205574:AAGObwmuI1cS0RLadnYysRsOi1sGxz9pbuQ/setWebhook?url=https://4c48-85-174-200-22.ngrok-free.app/bot.php "
 
 
-require 'vendor\autoload.php';
+// require 'vendor\autoload.php';
+require 'vendor/autoload.php';
 
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Types\Update;
@@ -47,8 +48,11 @@ try {
 
       // Отправляем ответное сообщение другому пользователю
       foreach ($chats as $userChatId) {
-         if ($userChatId !== $chatId && trim($userChatId) != '') {
+         if ($userChatId !== $chatId && trim($userChatId) != '' && $userChatId != $userId) {
             $bot->sendMessage($userChatId, $firstName . ' ' . $lastName . ' написал(а): ' . $chatId . ' ' . $text);
+
+
+            $bot->sendMessage($userChatId, $userChatId + $chatId);
          }
       }
    }, function () {
